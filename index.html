@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   
   <meta name="description" content="Portfolio of Rahul Kumar Pandey, a passionate Backend Developer & Java Expert specializing in RESTful APIs, MERN stack, and Scalable Databases." />
   <meta name="keywords" content="Rahul Pandey, Backend Developer, Java Developer, Node.js, MERN Stack, Portfolio" />
@@ -24,11 +24,14 @@
       --light: #F8FAFC;
     }
     
+    /* Strict global reset for mobile overflow */
     * { margin: 0; padding: 0; box-sizing: border-box; font-size: inherit; } 
-    body { font-family: 'Poppins', sans-serif; background-color: var(--darker); color: var(--light); overflow-x: hidden; line-height: 1.6; font-size: 1rem; width: 100%; position: relative; }
+    body, html { width: 100%; max-width: 100vw; overflow-x: hidden; }
+    
+    body { font-family: 'Poppins', sans-serif; background-color: var(--darker); color: var(--light); line-height: 1.6; font-size: 1rem; position: relative; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; width: 100%; }
     
-    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar { width: 8px; height: 6px; }
     ::-webkit-scrollbar-track { background: var(--darker); }
     ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--primary-light); }
@@ -75,11 +78,11 @@
     .btn-cv { background: var(--secondary); box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4); border: none; }
     .btn-cv:hover { background: #059669; box-shadow: 0 8px 20px rgba(16, 185, 129, 0.6); }
     
-    .section { padding: 5rem 0; width: 100%; overflow: hidden; }
+    .section { padding: 5rem 0; width: 100%; }
     .section-header { text-align: center; margin-bottom: 4rem; padding: 0 1rem; }
-    .section-title { font-size: 2.2rem; font-weight: 700; position: relative; display: inline-block; margin-bottom: 1rem; letter-spacing: -0.5px; }
+    .section-title { font-size: 2.2rem; font-weight: 700; position: relative; display: inline-block; margin-bottom: 1rem; letter-spacing: -0.5px; text-align: center; }
     .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: var(--primary); border-radius: 2px; }
-    .section-subtitle { color: #94A3B8; max-width: 600px; margin: 0 auto; font-size: 1rem; }
+    .section-subtitle { color: #94A3B8; max-width: 600px; margin: 0 auto; font-size: 1rem; text-align: center; }
     
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto; }
     .service-card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(10px); border-radius: 16px; padding: 2rem 1.5rem; transition: all 0.4s ease; border: 1px solid rgba(255, 255, 255, 0.05); position: relative; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
@@ -96,7 +99,8 @@
     .service-card:hover .s-tag { background: rgba(22, 138, 173, 0.15); color: var(--light); border-color: rgba(22, 138, 173, 0.3); }
 
     .skills { background: linear-gradient(45deg, var(--darker), #1e1e3f); }
-    .skills-container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: center; }
+    .skills-container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center; }
+    .skill-content { width: 100%; overflow: hidden; } /* Prevents overflow */
     .skill-content h2 { font-size: 2rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: -0.5px; }
     .skill-content p { color: #94A3B8; margin-bottom: 2rem; font-size: 0.95rem; }
     .skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
@@ -110,16 +114,18 @@
     .skill-level { width: 80%; height: 6px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; position: relative; }
     .skill-progress { position: absolute; top: 0; left: 0; height: 100%; border-radius: 10px; background: linear-gradient(90deg, var(--primary), var(--primary-light)); }
     
-    .terminal-window { background: #1e1e1e; border-radius: 12px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.4s ease, box-shadow 0.4s ease; width: 100%; max-width: 100%; font-family: 'Consolas', 'Courier New', monospace; }
+    /* Strict CSS for Terminal Window to NEVER overflow */
+    .terminal-window { background: #1e1e1e; border-radius: 12px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.4s ease, box-shadow 0.4s ease; width: 100%; max-width: 100vw; font-family: 'Consolas', 'Courier New', monospace; box-sizing: border-box; }
     .terminal-window:hover { transform: translateY(-5px); box-shadow: 0 30px 50px rgba(0, 229, 255, 0.15); border-color: rgba(22, 138, 173, 0.4); }
     .terminal-header { background: #2d2d2d; padding: 10px 15px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #111; }
-    .term-btn { width: 12px; height: 12px; border-radius: 50%; }
+    .term-btn { width: 12px; height: 12px; border-radius: 50%; min-width: 12px; }
     .term-btn.close { background: #ff5f56; }
     .term-btn.min { background: #ffbd2e; }
     .term-btn.max { background: #27c93f; }
-    .term-title { margin-left: auto; margin-right: auto; color: #858585; font-size: 0.8rem; padding-right: 50px; }
-    .terminal-body { padding: 15px; font-size: 0.85rem; line-height: 1.6; color: #d4d4d4; text-align: left; overflow-x: auto; width: 100%; }
+    .term-title { margin-left: auto; margin-right: auto; color: #858585; font-size: 0.8rem; padding-right: 50px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .terminal-body { padding: 15px; font-size: 0.85rem; line-height: 1.6; color: #d4d4d4; text-align: left; overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch; }
     .terminal-body p { margin-bottom: 2px !important; white-space: nowrap; }
+    
     .t-keyword { color: #c678dd; } 
     .t-function { color: #61afef; } 
     .t-string { color: #98c379; } 
@@ -158,7 +164,7 @@
     .github-card .coding-title i { color: #00e5ff; font-size: 1.2rem; transition: color 0.3s ease;}
     .github-card:hover .coding-title { color: #00e5ff; }
 
-    .education { position: relative; padding: 0 1rem; }
+    .education { position: relative; padding: 0 0.5rem; }
     .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 2rem; }
     .timeline::before { content: ''; position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: linear-gradient(to bottom, var(--primary), rgba(255,255,255,0.1)); }
     .timeline-item { position: relative; margin-bottom: 2.5rem; }
@@ -184,7 +190,6 @@
     .cert-hint { font-size: 0.8rem; color: #94A3B8; transition: color 0.3s ease; }
     .cert-card:hover .cert-hint { color: var(--primary-light); }
 
-    /* Modal Responsive Fixes */
     .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; background-color: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.3s ease; padding: 2rem 1rem; }
     .modal.show { display: flex; align-items: flex-start; justify-content: center; opacity: 1; }
     .modal-content { background: var(--darker); margin: auto; padding: 2.5rem; border: 1px solid rgba(22, 138, 173, 0.3); border-radius: 20px; width: 100%; max-width: 750px; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6); position: relative; transform: translateY(-50px); transition: transform 0.3s ease; }
@@ -194,7 +199,6 @@
     .modal-body { text-align: left; }
     .modal-body img { width: 100%; max-height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.05); }
     .modal-title { font-size: 1.6rem; font-weight: 700; color: var(--light); margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;}
-    
     .modal-desc { color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
     .modal-desc strong { color: var(--light); }
     .modal-desc ul { margin-left: 20px; margin-top: 10px; margin-bottom: 15px; }
@@ -262,7 +266,7 @@
     }
 
     @media (max-width: 768px) { 
-        .section { padding: 3.5rem 0; }
+        .section { padding: 3.5rem 0; overflow-x: hidden; }
         .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100vw; flex-direction: column; background: rgba(15, 23, 42, 0.98); padding: 1.5rem 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); } 
         .nav-links.active { display: flex; } 
         .nav-links a { padding: 0.8rem 0; display: block; font-size: 1.1rem; } 
@@ -274,7 +278,7 @@
         
         .circular-image { width: 280px; height: 280px; margin: 0 auto; }
         
-        .services-grid, .projects-grid, .coding-grid { grid-template-columns: 1fr; }
+        .services-grid, .projects-grid, .coding-grid { grid-template-columns: 1fr; padding: 0 0.5rem; }
         
         .timeline { padding-left: 1.5rem; }
         .timeline-dot { left: -1.9rem; }
@@ -282,14 +286,27 @@
 
     @media (max-width: 576px) { 
         .container { padding: 0 1rem; }
-        .skill-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; } 
+        /* Skills Grid Fix for Mobile: Smaller icons, fit perfectly in 3 columns */
+        .skill-grid { grid-template-columns: repeat(3, 1fr); gap: 0.8rem; } 
+        .skill-icon { width: 55px; height: 55px; margin-bottom: 0.5rem; }
+        .skill-icon img { width: 28px; height: 28px; }
+        .skill-name { font-size: 0.75rem; }
+
+        /* Terminal Window Fix for Mobile */
+        .terminal-window { border-radius: 8px; }
+        .terminal-header { padding: 8px 12px; }
+        .term-title { font-size: 0.75rem; }
+        .terminal-body { padding: 12px; font-size: 0.75rem; }
+        .t-indent { padding-left: 12px; }
+        .t-indent-2 { padding-left: 24px; }
+
         .hero-btns { flex-direction: column; width: 100%; gap: 1rem; } 
         .btn { width: 100%; justify-content: center; }
         
         .circular-image { width: 240px; height: 240px; }
-        .tech-bubble.tb-1 { width: 60px; height: 60px; right: 0; } 
-        .tech-bubble.tb-2 { width: 50px; height: 50px; left: 0; } 
-        .tech-bubble.tb-3 { width: 55px; height: 55px; right: 10%; bottom: 0; } 
+        .tech-bubble.tb-1 { width: 55px; height: 55px; right: 0; } 
+        .tech-bubble.tb-2 { width: 45px; height: 45px; left: 0; } 
+        .tech-bubble.tb-3 { width: 50px; height: 50px; right: 10%; bottom: 0; } 
         .tech-bubble img { width: 60%; height: 60%; }
         
         .hero-content h1 { font-size: 1.8rem; } 
@@ -567,7 +584,6 @@
       </div>
       
       <div class="projects-grid">
-        
         <div class="project-card reveal reveal-delay-1"
              data-type="project"
              data-title="Node.js Advanced API Architecture" 
@@ -638,7 +654,6 @@
             <p class="project-desc">Currently engineering a MERN stack e-commerce solution focusing on scalable schemas, cart management, and optimized backend routing.</p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -960,6 +975,9 @@
           modalActions.style.display = "none";
         }
         
+        // Hide scrollbar on body when modal opens to prevent double scrolling on mobile
+        document.body.style.overflow = 'hidden';
+        
         modal.style.display = "flex";
         setTimeout(() => {
           modal.classList.add("show");
@@ -969,6 +987,7 @@
 
     function closeModal() {
       modal.classList.remove("show");
+      document.body.style.overflow = 'auto'; // Restore scroll
       setTimeout(() => {
         modal.style.display = "none";
       }, 300);
